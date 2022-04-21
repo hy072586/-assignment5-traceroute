@@ -128,7 +128,7 @@ def get_route(hostname):
                     delay = str(round(timeSent - timeReceived)*1000)
                     tracelist1.append([rtt, delay, str(addr[0]), sourceHostname])
                     tracelist2.append(tracelist1[-1])
-                   
+
                     #Fill in end
                 elif types == 3:
                     bytes = struct.calcsize("d")
@@ -155,12 +155,12 @@ def get_route(hostname):
                     #If there is an exception/error to your if statements, you should append that to your list here
 
                     tracelist1.append([ttl, '*', 'Error Occurred'])
-                    return tracelist1
+                    
                     #Fill in end
                 break
-                
+
                 return tracelist1
-            
+
             finally:
                 mySocket.close()
 
