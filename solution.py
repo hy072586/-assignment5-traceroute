@@ -60,8 +60,6 @@ def get_route(hostname):
     for ttl in range(1,MAX_HOPS):
         for tries in range(TRIES):
             destAddr = gethostbyname(hostname)
-
-
             #Fill in start
             # Make a raw socket named mySocket
             icmp = getprotobyname("icmp")
@@ -98,10 +96,9 @@ def get_route(hostname):
             else:
                 #Fill in start
                 #Fetch the icmp type from the IP packet
-                #Fill in end
-
                 icmp_type, icmp_code, icmp_checksum, icmp_id, icmp_seq, timeSent = struct.unpack('bbHHhd', recvPacket[20:36])
                 types, = struct.unpack('b', recvPacket[20:21])
+                # Fill in end
                 try: #try to fetch the hostname
                     sourceHostname = gethostbyaddr(addr[0])[0]
                     #Fill in start
