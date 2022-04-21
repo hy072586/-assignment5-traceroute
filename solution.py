@@ -149,20 +149,18 @@ def get_route(hostname):
                     delay = str(round(timeSent - timeReceived) * 1000)
                     tracelist1.append([delay, rtt, str(addr[0]), sourceHostname])
                     tracelist2.append(tracelist1[-1])
+                    return tracelist2
                     #Fill in end
                 else:
                     #Fill in start
                     #If there is an exception/error to your if statements, you should append that to your list here
-
                     tracelist1.append([ttl, '*', 'Error Occurred'])
-                    
                     #Fill in end
                 break
-
-                return tracelist2
-
+                print(tracelist2)
             finally:
                 mySocket.close()
+
 
 if __name__ == '__main__':
     get_route("google.co.il")
