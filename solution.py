@@ -110,8 +110,8 @@ def get_route(hostname):
                 types, = struct.unpack('b', recvPacket[20:21])
                 # Fill in end
                 try: #try to fetch the hostname
-                    sourceHostname = gethostbyaddr(addr[0])[0]
                     #Fill in start
+                    sourceHostname = gethostbyaddr(addr[0])[0]
                     #Fill in end
                 except herror:   #if the host does not provide a hostname
                     #Fill in start
