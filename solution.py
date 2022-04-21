@@ -38,16 +38,17 @@ def checksum(string):
     return answer
 
 def build_packet():
-    ID = os.getpid() & 0xffff
     myChecksum = 0
-    header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, myChecksum, ID, 1)
-    data = struct.pack("d", time.time())
+    myID = os.getpid() & 0xFFFF
+    sendTime = time.time()
+    header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, myChecksum, myID, 1)
+    data = struct.pack("d", sendTime)
     myChecksum = checksum(header + data)
     if sys.platform == 'darwin':
         myChecksum = htons(myChecksum) & 0xffff
     else:
         myChecksum = htons(myChecksum)
-    header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, myChecksum, ID, 1)
+    header = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, myChecksum, myID, 1)
     packet = header + data
     return packet
 
