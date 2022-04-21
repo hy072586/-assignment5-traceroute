@@ -128,7 +128,7 @@ def get_route(hostname):
                     #Fill in start
                     #You should add your responses to your lists here
                     rtt = str(round(timeSent * 1000)) + "ms"
-                    tracelist1.append([str(ttl), rtt, str(addr[0]), sourceHostname])
+                    tracelist1.append([rtt, str(addr[0]), sourceHostname])
                     tracelist2.append(tracelist1[-1])
                     print(tracelist1)
                     print(tracelist2)
@@ -150,7 +150,7 @@ def get_route(hostname):
                     #Fill in start
                     #You should add your responses to your lists here and return your list if your destination IP is met
                     rtt = str(round((t - timeSent) * 1000)) + "ms"
-                    tracelist1.append([str(ttl), rtt, str(addr[0]), sourceHostname])
+                    tracelist1.append([rtt, str(addr[0]), sourceHostname])
                     tracelist2.append(tracelist1[-1])
                     print(tracelist1)
                     print(tracelist2)
@@ -164,6 +164,6 @@ def get_route(hostname):
                 break
             finally:
                 mySocket.close()
- 
+
 if __name__ == '__main__':
     get_route("google.co.il")
